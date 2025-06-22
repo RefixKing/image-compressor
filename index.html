@@ -86,6 +86,45 @@
   .app-content {
     padding: 30px 40px;
   }
+
+  /* How-to-Use Section */
+  .how-to-use {
+    background: rgba(15, 23, 42, 0.4);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px; /* Add margin to separate from drop area */
+  }
+
+  .how-to-use summary {
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.9);
+    list-style: none; /* Hide default marker */
+  }
+  .how-to-use summary::-webkit-details-marker {
+    display: none; /* Hide default marker in Chrome/Safari */
+  }
+
+  .how-to-use-content {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+  }
+
+  .how-to-use-content ol {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .how-to-use-content li strong {
+    display: block;
+    font-weight: 600;
+    color: white;
+  }
   
   #drop-area {
     border: 3px dashed rgba(255 255 255 / 0.3);
@@ -459,6 +498,28 @@
     </div>
     
     <div class="app-content">
+
+      <div class="how-to-use">
+        <details>
+            <summary>How to Use This Tool</summary>
+            <div class="how-to-use-content">
+                <ol>
+                    <li>
+                        <strong>Upload Your Images:</strong>
+                        <span>Drag and drop images onto the upload area, or click "Select Images" to find them on your device. You can add multiple files.</span>
+                    </li>
+                    <li>
+                        <strong>Adjust Settings (Optional):</strong>
+                        <span>Use the "Compression Quality" slider to find the right balance between file size and image quality. You can also choose between JPG and PNG formats.</span>
+                    </li>
+                    <li>
+                        <strong>Compress &amp; Download:</strong>
+                        <span>Click the "Compress Images" button. Once done, your new images will appear below. Click the "Download" button on each image card to save it.</span>
+                    </li>
+                </ol>
+            </div>
+        </details>
+      </div>
       <div id="drop-area">
         <div class="icon">📁</div>
         <h3>Upload Images</h3>
@@ -535,6 +596,11 @@
     <div class="footer">
       <p>All processing happens in your browser. No images are uploaded to any server.</p>
       <p>Made with ❤️ | <a href="#" id="reset-link">Reset Tool</a></p>
+      <footer> 
+          <a href="privacy.html">Privacy Policy</a> | 
+          <a href="terms.html">Terms of Use</a> | 
+          <a href="contact.html">Contact</a> 
+      </footer>
     </div>
   </div>
   
@@ -877,9 +943,9 @@
       
       updateCompressButton();
     }
-    
+
     function updateCompressButton() {
-      compressBtn.disabled = files.length === 0;
+        compressBtn.disabled = files.length === 0;
     }
     
     function updateQualityValue() {
@@ -916,7 +982,9 @@
       }, 3000);
     }
     
-    // Initialize quality display
+    // Initialize
+    renderPreviews();
+    updateCompressButton();
     updateQualityValue();
   </script>
 </body>
